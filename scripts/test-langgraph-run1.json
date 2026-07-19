@@ -1,0 +1,502 @@
+{
+  "elapsed": "35.2",
+  "checks": [
+    "tavily ok-with-hits=6 fail=0 total=6",
+    "axes present=true",
+    "axes scores separate F=8 M=6 I=7",
+    "memory sufficient=false chunks=6 topSim=0.787",
+    "mode from trace: mode:full",
+    "founderScoreHistory=[80] prior=null",
+    "trace length=28",
+    "trace memory/recall* → OK",
+    "trace memory/decision:* → OK",
+    "trace sourcing/start* → OK",
+    "trace sourcing/mode:* → OK",
+    "trace sourcing/done* → OK",
+    "trace memory/condense* → OK",
+    "trace assessment/start* → OK",
+    "trace assessment/done* → OK"
+  ],
+  "trace": [
+    {
+      "agent": "memory",
+      "step": "recall",
+      "detail": "Acme Ventures.md · DB lookup"
+    },
+    {
+      "agent": "memory",
+      "step": "hit",
+      "detail": "2 prior notes"
+    },
+    {
+      "agent": "memory",
+      "step": "rag:hit",
+      "detail": "6 chunks · top sim 0.79"
+    },
+    {
+      "agent": "memory",
+      "step": "decision:gap",
+      "detail": "memory thin/stale — running full Sourcing"
+    },
+    {
+      "agent": "memory",
+      "step": "founder:new",
+      "detail": "cold-start candidate Joanathan McIntosh"
+    },
+    {
+      "agent": "sourcing",
+      "step": "start",
+      "detail": "running targeted Tavily searches"
+    },
+    {
+      "agent": "sourcing",
+      "step": "mode:full",
+      "detail": "6 planned queries"
+    },
+    {
+      "agent": "sourcing",
+      "step": "tavily:results",
+      "detail": "5 hits · Billow AI Labs company overview"
+    },
+    {
+      "agent": "sourcing",
+      "step": "tavily:results",
+      "detail": "5 hits · Billow AI Labs reviews complaints"
+    },
+    {
+      "agent": "sourcing",
+      "step": "tavily:results",
+      "detail": "5 hits · Billow AI Labs reddit"
+    },
+    {
+      "agent": "sourcing",
+      "step": "tavily:results",
+      "detail": "5 hits · Joanathan McIntosh founder background"
+    },
+    {
+      "agent": "sourcing",
+      "step": "tavily:results",
+      "detail": "2 hits · https://thebillow.ai site review"
+    },
+    {
+      "agent": "sourcing",
+      "step": "tavily:results",
+      "detail": "5 hits · Billow AI Labs AI infra Fintech traction funding"
+    },
+    {
+      "agent": "sourcing",
+      "step": "done",
+      "detail": "1 LLM steps, 6 initial searches"
+    },
+    {
+      "agent": "memory",
+      "step": "condense",
+      "detail": "summarizing for DB storage"
+    },
+    {
+      "agent": "memory",
+      "step": "saved",
+      "detail": "vc_memory row upserted for Acme Ventures/Billow AI Labs"
+    },
+    {
+      "agent": "memory",
+      "step": "rag:saved",
+      "detail": "13 chunks embedded into pgvector"
+    },
+    {
+      "agent": "memory",
+      "step": "signals:stored",
+      "detail": "3 founder signals"
+    },
+    {
+      "agent": "assessment",
+      "step": "start",
+      "detail": "3-axis screening (Founder / Market / Idea)"
+    },
+    {
+      "agent": "assessment",
+      "step": "done",
+      "detail": "diligence"
+    },
+    {
+      "agent": "validator",
+      "step": "start",
+      "detail": "verifying 5 claims"
+    },
+    {
+      "agent": "validator",
+      "step": "unverified",
+      "detail": "Approximately 51% of employees would recommend working at Bi"
+    },
+    {
+      "agent": "validator",
+      "step": "verified",
+      "detail": "The company automates complex financial workflows, enhancing"
+    },
+    {
+      "agent": "validator",
+      "step": "verified",
+      "detail": "The company has received mixed reviews from employees, with "
+    },
+    {
+      "agent": "validator",
+      "step": "unverified",
+      "detail": "Billow AI Labs has raised a total of $55 million in funding,"
+    },
+    {
+      "agent": "validator",
+      "step": "verified",
+      "detail": "Co-founder Joanathan McIntosh previously built and exited an"
+    },
+    {
+      "agent": "validator",
+      "step": "done",
+      "detail": "0 contradicted, 3 verified"
+    },
+    {
+      "agent": "memory",
+      "step": "founder-score:saved",
+      "detail": "80/100 · trend stable"
+    }
+  ],
+  "memory": {
+    "ragChunks": 6,
+    "topSimilarity": 0.787068615821918,
+    "sufficient": false
+  },
+  "coldStart": {
+    "active": false,
+    "confidence": 1,
+    "note": ""
+  },
+  "founderScoreHistory": [
+    80
+  ],
+  "priorFounderScore": null,
+  "tavilyRuns": [
+    {
+      "ok": true,
+      "query": "Billow AI Labs company overview",
+      "results": [
+        {
+          "title": "The Billow AI (YC S26)",
+          "url": "https://www.linkedin.com/company/billow-ai",
+          "content": "Overview:\nBillow is the AI operating brain for regulated industries, so your team can focus on the science. Automated, accurate, audit-ready. What once took days, done in minutes. Budget vs. actual Clinical accruals Variance analysis Scenario planning Biopharma-built rNPV / DCF modeling and more... Trials open → https://thebillow.ai/\n\nWebsite: https://thebillow.ai/\nCrunchbase Url: N/A\nLinkedin Url: N/A\n\nIndustry:\nTechnology, Information and Internet\n\nCompany size:\n11-50 employees\n3 associated members (LinkedIn members who’ve listed The Billow AI as their current workplace on their profile)\n\nFounded:\nN/A\n\nFunding:\nLast Round Date: N/A\nLast Round Type: N/A\nTotal Rounds: N/A\nLast Round Raised: N/A\n\nInvestors:\nN/A",
+          "score": 0.87348515
+        },
+        {
+          "title": "AI-native Accounting & Finance Firm for Regulated Industries",
+          "url": "https://www.ycombinator.com/companies/billow-ai-labs",
+          "content": "Home›Companies›Billow AI Labs. AI-native Accounting & Finance Firm for Regulated Industries. Billow handles the work of Accounting and FP&A FTEs for regulated companies while keeping teams compliant and audit-ready. We work within existing stacks (NetSuite, Coupa, and 80+ other systems) and complex spreadsheets, chasing down information and coordinating approvals across stakeholders. Built by repeat founders; Joan built and exited an accounting/ERP platform (45,000 businesses in 4 years) and Phil built Bloomberg's financial “brain” data infrastructure, and as CTO of a trading platform ($1B in volume). Advisors include CFOs, controllers, auditors from publicly-traded biopharma, and a Big-4 Accounting firm. Repeat, exited founder - built an accounting/ERP software (45,000 businesses in 4 yea",
+          "score": 0.8446273
+        },
+        {
+          "title": "Billow AI — AI Employees for Finance & Accounting",
+          "url": "https://thebillow.ai",
+          "content": "# Build finance and accounting teams with AI employees. From AP, procure-to-pay to month-end close, Billow executes while your team reviews and approves. > \"Every CFO is promised AI transformation. Billow is the first place I actually saw it. Watching Billow run finance/accounting workflows end to end, fully auditable. Faisal A.Founder, CoreView AdvisorsScaling finance teams from Series A thru IPO and M&A. ## Build your agent, in minutes. Designed for complex finance, audit-ready. ↳ What once took days, now done in minutes.FIG. ## Your AI workforce running end-to-end. ### Series B company saves 5 days from month-end close. \"We used to spend a full week on BvA pivots, flux, and board commentary. Now it's one trigger — variance reports, cash scenarios, and the board deck, done.\". Built for t",
+          "score": 0.6356076
+        },
+        {
+          "title": "Billow AI — Multi-Agent AI Orchestration for Regulated Industries",
+          "url": "https://www.thebillow.ai/team",
+          "content": "# We who care about advancing research. ## Joanathan McIntosh. Built AI/ML Platform for regulated industries. Accountant, financial analyst by training. ## Philip Moniaga. CTO Trading Platform ($122M), Data Platform for Regulated and Energy Industries. Aziz Sawaf, MBEE, MBA, CFA. CFO at Theravance Biopharma (TBPH), California Life Sciences Board Member, 20+ years in biopharma finance. ## Faisal Shawwa, MBA. Founder of CoreView Advisors, ABFO Board Member. 20+ years scaling biotech from Series A thru IPO and M&A. ## Maxson JY Tee. SVP of Strategic Investment at BNY. 8+ years in digital corporate strategy and fintech investing. ## Ryan Jones. Founding CFO of Kyverna Therapeutics (KYTX), life sciences company builder and advisor. ## Stephen Mendel. Board Member at DuckDuckGo, Motive Medical I",
+          "score": 0.6152965
+        },
+        {
+          "title": "Billow AI 2026 Company Profile: Valuation, Funding & Investors",
+          "url": "https://pitchbook.com/profiles/company/897242-41",
+          "content": "Developer of an AI-powered financial modeling and scenario analysis platform designed for biotech and life sciences financial workflows.",
+          "score": 0.60917604
+        }
+      ],
+      "answer": "Billow AI Labs is an AI-native firm for finance and accounting in regulated industries, offering AI-driven solutions for compliance and efficiency. Founded by experienced professionals, it focuses on automating financial workflows. The company is a Series B startup."
+    },
+    {
+      "ok": true,
+      "query": "Billow AI Labs reviews complaints",
+      "results": [
+        {
+          "title": "AI LABS Reviews by 30+ Employees | Rated 3.3/5",
+          "url": "https://www.ambitionbox.com/reviews/ai-labs-private-limited-reviews",
+          "content": "Almost Everything is good but there are PF problems for old employees and more over Learning is less as everytime there will be content updating",
+          "score": 0.43323857
+        },
+        {
+          "title": "Billow AI — AI Employees for Finance & Accounting",
+          "url": "https://thebillow.ai",
+          "content": "# Build finance and accounting teams with AI employees. From AP, procure-to-pay to month-end close, Billow executes while your team reviews and approves. > \"Every CFO is promised AI transformation. Billow is the first place I actually saw it. Watching Billow run finance/accounting workflows end to end, fully auditable. Faisal A.Founder, CoreView AdvisorsScaling finance teams from Series A thru IPO and M&A. ## Build your agent, in minutes. Designed for complex finance, audit-ready. ↳ What once took days, now done in minutes.FIG. ## Your AI workforce running end-to-end. ### Series B company saves 5 days from month-end close. \"We used to spend a full week on BvA pivots, flux, and board commentary. Now it's one trigger — variance reports, cash scenarios, and the board deck, done.\". Built for t",
+          "score": 0.42520002
+        },
+        {
+          "title": "Pros & Cons of Working At AI Labs - Reviews",
+          "url": "https://www.glassdoor.com/Reviews/AI-Labs-Reviews-E3119377.htm",
+          "content": "51% of AI Labs employees would recommend working there to a friend based on Glassdoor reviews. Employees also rated AI Labs 3.0 out of 5 for work life balance,",
+          "score": 0.34680724
+        },
+        {
+          "title": "AI-native Accounting & Finance Firm for Regulated Industries",
+          "url": "https://www.ycombinator.com/companies/billow-ai-labs",
+          "content": "Home›Companies›Billow AI Labs. AI-native Accounting & Finance Firm for Regulated Industries. Billow handles the work of Accounting and FP&A FTEs for regulated companies while keeping teams compliant and audit-ready. We work within existing stacks (NetSuite, Coupa, and 80+ other systems) and complex spreadsheets, chasing down information and coordinating approvals across stakeholders. Built by repeat founders; Joan built and exited an accounting/ERP platform (45,000 businesses in 4 years) and Phil built Bloomberg's financial “brain” data infrastructure, and as CTO of a trading platform ($1B in volume). Advisors include CFOs, controllers, auditors from publicly-traded biopharma, and a Big-4 Accounting firm. Repeat, exited founder - built an accounting/ERP software (45,000 businesses in 4 yea",
+          "score": 0.30284497
+        },
+        {
+          "title": "The Billow AI (YC S26)",
+          "url": "https://www.linkedin.com/company/billow-ai",
+          "content": "Overview:\nBillow is the AI operating brain for regulated industries, so your team can focus on the science. Automated, accurate, audit-ready. What once took days, done in minutes. Budget vs. actual Clinical accruals Variance analysis Scenario planning Biopharma-built rNPV / DCF modeling and more... Trials open → https://thebillow.ai/\n\nWebsite: https://thebillow.ai/\nCrunchbase Url: N/A\nLinkedin Url: N/A\n\nIndustry:\nTechnology, Information and Internet\n\nCompany size:\n11-50 employees\n3 associated members (LinkedIn members who’ve listed The Billow AI as their current workplace on their profile)\n\nFounded:\nN/A\n\nFunding:\nLast Round Date: N/A\nLast Round Type: N/A\nTotal Rounds: N/A\nLast Round Raised: N/A\n\nInvestors:\nN/A",
+          "score": 0.29087558
+        }
+      ],
+      "answer": "Billow AI Labs has received mixed reviews, with some employees citing issues with Provident Fund and limited learning opportunities, while others praise its AI-driven efficiency in finance and accounting tasks. The company focuses on automating finance workflows to save time and ensure compliance."
+    },
+    {
+      "ok": true,
+      "query": "Billow AI Labs reddit",
+      "results": [
+        {
+          "title": "Billow AI — AI Employees for Finance & Accounting",
+          "url": "https://thebillow.ai",
+          "content": "# Build finance and accounting teams with AI employees. From AP, procure-to-pay to month-end close, Billow executes while your team reviews and approves. > \"Every CFO is promised AI transformation. Billow is the first place I actually saw it. Watching Billow run finance/accounting workflows end to end, fully auditable. Faisal A.Founder, CoreView AdvisorsScaling finance teams from Series A thru IPO and M&A. ## Build your agent, in minutes. Designed for complex finance, audit-ready. ↳ What once took days, now done in minutes.FIG. ## Your AI workforce running end-to-end. ### Series B company saves 5 days from month-end close. \"We used to spend a full week on BvA pivots, flux, and board commentary. Now it's one trigger — variance reports, cash scenarios, and the board deck, done.\". Built for t",
+          "score": 0.4024631
+        },
+        {
+          "title": "Companies' AI Bills Are Bigger Than Ever — and Coming ...",
+          "url": "https://www.reddit.com/r/BetterOffline/comments/1twhvtj/companies_ai_bills_are_bigger_than_ever_and",
+          "content": "In the coming months, some of the world's biggest AI labs — including OpenAI and Anthropic PBC — will debut on the public markets at valuations",
+          "score": 0.283053
+        },
+        {
+          "title": "Ben Luong's Post",
+          "url": "https://www.linkedin.com/posts/benluong_yesterday-a-reddit-post-went-viral-about-activity-7428715635649720320-4wKW",
+          "content": "Yesterday a Reddit post went viral about a company whose AI had been hallucinating analytics data for 3 months. VP made territory decisions",
+          "score": 0.23842646
+        },
+        {
+          "title": "r/Build_AI_Agents",
+          "url": "https://www.reddit.com/r/Build_AI_Agents",
+          "content": "r/Build_AI_Agents: A collaborative hub for developers, enthusiasts, and innovators dedicated to designing and deploying AI agents. Whether you're…",
+          "score": 0.14224409
+        },
+        {
+          "title": "Anyone else getting unexpected AI bills? How are you ...",
+          "url": "https://www.reddit.com/r/SaaS/comments/1ryosl8/anyone_else_getting_unexpected_ai_bills_how_are",
+          "content": "I’ve been using multiple AI tools lately (ChatGPT, Claude, Cursor, OpenAI API), and I’ve noticed something frustrating: It’s really hard to understand",
+          "score": 0.11987123
+        }
+      ],
+      "answer": "Billow AI Labs is a company that provides AI solutions for finance and accounting, designed to automate complex workflows. It focuses on creating audit-ready AI employees for tasks like month-end close. Billow emphasizes data security and compliance."
+    },
+    {
+      "ok": true,
+      "query": "Joanathan McIntosh founder background",
+      "results": [
+        {
+          "title": "Jonathan McIntosh - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Jonathan_McIntosh",
+          "content": "**Jonathan McIntosh** is an American producer, writer, artist, feminist, and cultural critic. He is the creator of the Pop Culture Detective Agency video series examining intersections of politics, masculinity, and entertainment. He was also a producer and co-writer on the *Tropes vs. Women in Video Games* YouTube video series. The final rulemaking stated an exemption for \"motion pictures (including television shows and videos), as defined in 17 U.S.C. 101, where circumvention is undertaken solely in order to make use of short portions of the motion pictures for the purpose of criticism or comment in limited instances.\" It specifically points out \"Buffy versus Edward: Twilight Remixed\" in the rulemaking: \"Based on the video evidence presented, the Register is able to conclude that diminish",
+          "score": 0.6102915
+        },
+        {
+          "title": "About Jonathan McIntosh",
+          "url": "https://www.my-headhunter.com/headhunters/1622517474/jonathan-mcintosh/about",
+          "content": "A former pastor of multiple churches. Jonathan brings 18 years of nonprofit leadership experience. Jonathan attended the University of Mississippi and has a",
+          "score": 0.598524
+        },
+        {
+          "title": "Jonathan McIntosh - Bio, Family",
+          "url": "https://www.famousbirthdays.com/people/jonathan-mcintosh.html",
+          "content": "Producer, writer, cultural critic, and YouTuber. In 2016, he launched the Pop Culture Detective Agency, a Patreon-funded web series. via He created the Right",
+          "score": 0.4434805
+        },
+        {
+          "title": "Jonathan McIntosh",
+          "url": "https://www.linkedin.com/in/mcintoshjonathan",
+          "content": "Jonathan McIntosh\nCasco Construction Corp.\nColorado Springs, Colorado, United States\n500 connections, 821 followers\n\n\nAbout\nInnovative Business Leader | Entrepreneur | Operations & Technical Expert As an…\n\n\nExperience\nN/A\n\n\nEducation\nN/A",
+          "score": 0.39592856
+        },
+        {
+          "title": "About Jonathan McIntosh – The Pop Culture Detective Agency",
+          "url": "https://popculturedetective.agency/jonathan-mcintosh",
+          "content": "Under the banner of The Pop Culture Detective Agency, Jonathan is currently producing a series of long-form video essays investigating the intersections of masculinity, politics and entertainment. Video essays and podcasts by Jonathan McIntosh. **Jonathan McIntosh** is a cultural critic who has been deconstructing and transforming mass media narratives for critical and educational purposes since before the invention of YouTube. His online videos have been recommended by Roger Ebert and celebrated by Lawrence Lessig, while Glenn Beck has said of Jonathan’s work “It is some of the best, well made propaganda I’ve ever seen.”. In 2012, together with the Electronic Frontier Foundation, Jonathan screened his “Buffy vs Edward” remix video for the US Copyright Office hearings on exemptions to the ",
+          "score": 0.37965488
+        }
+      ],
+      "answer": "Jonathan McIntosh is an American producer, writer, and cultural critic known for his work on the Pop Culture Detective Agency and \"Tropes vs. Women in Video Games.\" He has been influential in discussions about media and copyright law."
+    },
+    {
+      "ok": true,
+      "query": "https://thebillow.ai site review",
+      "results": [
+        {
+          "title": "Billow AI — AI Employees for Finance & Accounting",
+          "url": "https://thebillow.ai",
+          "content": "# Build finance and accounting teams with AI employees. From AP, procure-to-pay to month-end close, Billow executes while your team reviews and approves. > \"Every CFO is promised AI transformation. Billow is the first place I actually saw it. Watching Billow run finance/accounting workflows end to end, fully auditable. Faisal A.Founder, CoreView AdvisorsScaling finance teams from Series A thru IPO and M&A. ## Build your agent, in minutes. Designed for complex finance, audit-ready. ↳ What once took days, now done in minutes.FIG. ## Your AI workforce running end-to-end. ### Series B company saves 5 days from month-end close. \"We used to spend a full week on BvA pivots, flux, and board commentary. Now it's one trigger — variance reports, cash scenarios, and the board deck, done.\". Built for t",
+          "score": 0.6862234
+        },
+        {
+          "title": "The Billow Agency - 62 Reviews - Insurance in Halifax, PA",
+          "url": "https://reviews.birdeye.com/the-billow-agency-260350656",
+          "content": "Read 62 customer reviews of The Billow Agency, one of the best Insurance businesses at 3530 Peters Mountain Road, Halifax, PA 17032 United States.",
+          "score": 0.575517
+        }
+      ],
+      "answer": "Billow AI automates finance and accounting tasks, saving time and ensuring compliance. It uses AI employees for processes like AP and month-end close. Customers report significant time savings and improved efficiency."
+    },
+    {
+      "ok": true,
+      "query": "Billow AI Labs AI infra Fintech traction funding",
+      "results": [
+        {
+          "title": "AI Funding Rounds 2026 — Live Deal Tracker",
+          "url": "https://aifunding.me/deals",
+          "content": "Labs AI Infrastructure Series A AI post-training startup Bespoke Labs raises $40M in funding. Fintech Series A Alchemab Therapeutics secures €29.3 million. The",
+          "score": 0.5253938
+        },
+        {
+          "title": "AI-native Accounting & Finance Firm for Regulated Industries",
+          "url": "https://www.ycombinator.com/companies/billow-ai-labs",
+          "content": "Home›Companies›Billow AI Labs. AI-native Accounting & Finance Firm for Regulated Industries. Billow handles the work of Accounting and FP&A FTEs for regulated companies while keeping teams compliant and audit-ready. We work within existing stacks (NetSuite, Coupa, and 80+ other systems) and complex spreadsheets, chasing down information and coordinating approvals across stakeholders. Built by repeat founders; Joan built and exited an accounting/ERP platform (45,000 businesses in 4 years) and Phil built Bloomberg's financial “brain” data infrastructure, and as CTO of a trading platform ($1B in volume). Advisors include CFOs, controllers, auditors from publicly-traded biopharma, and a Big-4 Accounting firm. Repeat, exited founder - built an accounting/ERP software (45,000 businesses in 4 yea",
+          "score": 0.4928966
+        },
+        {
+          "title": "The Billow AI (YC S26)",
+          "url": "https://www.linkedin.com/company/billow-ai",
+          "content": "Overview:\nBillow is the AI operating brain for regulated industries, so your team can focus on the science. Automated, accurate, audit-ready. What once took days, done in minutes. Budget vs. actual Clinical accruals Variance analysis Scenario planning Biopharma-built rNPV / DCF modeling and more... Trials open → https://thebillow.ai/\n\nWebsite: https://thebillow.ai/\nCrunchbase Url: N/A\nLinkedin Url: N/A\n\nIndustry:\nTechnology, Information and Internet\n\nCompany size:\n11-50 employees\n3 associated members (LinkedIn members who’ve listed The Billow AI as their current workplace on their profile)\n\nFounded:\nN/A\n\nFunding:\nLast Round Date: N/A\nLast Round Type: N/A\nTotal Rounds: N/A\nLast Round Raised: N/A\n\nInvestors:\nN/A",
+          "score": 0.36895174
+        },
+        {
+          "title": "How AI Deep Research Can Transform Biotech Financial ...",
+          "url": "https://www.forbes.com/councils/forbestechcouncil/2025/12/30/how-ai-deep-research-can-transform-biotech-financial-planning",
+          "content": "PwC reports that 79% of executives say AI agents are already being adopted, though only 34% are using them in accounting and finance—suggesting significant room for growth. There has also been a rise in AI tools designed specifically for the finance function, including a new wave of “deep research” software—think reasoning agents that live inside Excel—that brings context, data and safe execution into one place. Built on models from OpenAI, Anthropic and Google, these systems can help teams build, update and audit the spreadsheets finance teams rely on. Meanwhile, AI-native CFO platforms—including Maximor (ex-Microsoft founders) and my company, Billow AI—take a different approach: purpose-built agents for workflows like month-end close, cashflow and collections that can replace or sit alon",
+          "score": 0.23356688
+        },
+        {
+          "title": "The Week’s 10 Biggest Funding Rounds: A Lot Of Really Big Deals",
+          "url": "https://news.crunchbase.com/venture/biggest-funding-rounds-ai-fintech-lambda",
+          "content": "Artificial intelligence • Cybersecurity • Fintech • Health, Wellness & Biotech • Robotics • Startups • Venture. *Want to keep track of the largest startup funding deals in 2025 with our curated list of $100 million-plus venture deals to U.S.-based companies? *This is a weekly feature that runs down the week’s top 10 announced funding rounds in the U.S. Check out last week’s biggest funding rounds here.*. Lambda, a provider of AI cloud infrastructure, closed on $1.5 billion in Series E funding. 1. **Lambda, $1.5B, AI cloud infrastructure:** San Francisco-based Lambda, a provider of AI cloud infrastructure, says it raised over $1.5 billion in Series E funding led by TWG Global, a holding company led by Thomas Tull and Mark Walter. 5. **Physical Intelligence, $600M, robotics AI:** San Francis",
+          "score": 0.22561316
+        }
+      ],
+      "answer": "Billow AI Labs is an AI-native firm for regulated industries, focusing on accounting and finance automation. It has not disclosed recent funding details. AI tools for finance are growing, with Billow AI offering specialized solutions."
+    }
+  ],
+  "assessment": {
+    "recommendation": "diligence",
+    "thesisFit": true,
+    "thesisFitNote": "Billow AI Labs fits the VC thesis as it operates in the AI infra and Fintech sectors, is at the Seed stage, and is based in the US.",
+    "founderScore": 8,
+    "founderBlurb": "Joanathan McIntosh has a strong fintech background with a successful ERP exit, complemented by Philip Moniaga's experience at Bloomberg.",
+    "companyReputationScore": 5,
+    "riskScore": 6,
+    "shouldInvest": false,
+    "snapshot": "Billow AI Labs automates financial workflows for regulated industries, enhancing compliance and efficiency, but faces employee satisfaction challenges.",
+    "hypotheses": [
+      "The company's AI-driven solutions will gain traction in the regulated finance sector.",
+      "Employee dissatisfaction may hinder growth and retention, impacting long-term success."
+    ],
+    "strengths": [
+      "Strong founder backgrounds in fintech and AI.",
+      "Innovative solutions that automate complex workflows.",
+      "Significant funding raised, indicating investor confidence."
+    ],
+    "weaknesses": [
+      "Mixed employee reviews regarding work-life balance.",
+      "Reports of layoffs may indicate operational instability.",
+      "Challenges in employee retention could affect growth."
+    ],
+    "opportunities": [
+      "Growing demand for AI solutions in finance.",
+      "Potential for market expansion and product development.",
+      "Ability to leverage existing integrations with major systems."
+    ],
+    "risks": [
+      "Employee dissatisfaction could lead to high turnover.",
+      "Operational challenges may impact service delivery.",
+      "Market competition in AI-driven financial solutions."
+    ],
+    "claims": [
+      {
+        "text": "Billow AI Labs has raised a total of $55 million in funding, including a $40 million Series A round.",
+        "trust": "unverified",
+        "evidence": "The search snippets do not provide any specific information about Billow AI Labs or its funding rounds, including the claimed $55 million total funding and $40 million Series A round.",
+        "evidenceUrl": ""
+      },
+      {
+        "text": "The company automates complex financial workflows, enhancing compliance and efficiency.",
+        "trust": "verified",
+        "evidence": "The snippet from Billow AI's website explicitly states that they automate finance and accounting workflows, enhancing efficiency and compliance, which directly supports the claim.",
+        "evidenceUrl": "https://thebillow.ai"
+      },
+      {
+        "text": "Co-founder Joanathan McIntosh previously built and exited an accounting platform serving 45,000 businesses.",
+        "trust": "verified",
+        "evidence": "The snippet explicitly states that Joanathan McIntosh built and exited an accounting/ERP platform serving 45,000 businesses in 4 years, which directly supports the claim.",
+        "evidenceUrl": "https://www.ycombinator.com/companies/billow-ai-labs"
+      },
+      {
+        "text": "The company has received mixed reviews from employees, with an average rating of 3.3 out of 5.",
+        "trust": "verified",
+        "evidence": "The snippet from AmbitionBox explicitly states that AI LABS employees rate the company at 3.3 out of 5, confirming the claim about mixed reviews and the average rating.",
+        "evidenceUrl": "https://www.ambitionbox.com/reviews/ai-labs-private-limited-reviews?page=2"
+      },
+      {
+        "text": "Approximately 51% of employees would recommend working at Billow AI Labs to a friend.",
+        "trust": "unverified",
+        "evidence": "The search results do not provide any information regarding employee recommendations for working at Billow AI Labs, nor do they mention any employee satisfaction metrics related to the company.",
+        "evidenceUrl": ""
+      }
+    ],
+    "gaps": [
+      "Lack of specific financial metrics such as ARR or growth rates.",
+      "No detailed information on current product performance or customer feedback."
+    ],
+    "problemAndProduct": "Billow AI Labs addresses the pain of slow and complex financial workflows in regulated industries by automating these processes, significantly reducing task completion time. Their AI-driven solutions ensure compliance and efficiency, integrating seamlessly with existing financial systems.",
+    "tractionKPIs": [
+      {
+        "label": "Total Funding",
+        "value": "$55 million",
+        "disclosed": true
+      },
+      {
+        "label": "Series A Funding",
+        "value": "$40 million",
+        "disclosed": true
+      },
+      {
+        "label": "Employee Recommendation Rate",
+        "value": "51%",
+        "disclosed": true
+      },
+      {
+        "label": "Average Employee Rating",
+        "value": "3.3/5",
+        "disclosed": true
+      },
+      {
+        "label": "Current Stage",
+        "value": "Series B",
+        "disclosed": true
+      }
+    ],
+    "axes": {
+      "founder": {
+        "score": 8,
+        "trend": "stable",
+        "rationale": "Strong founder backgrounds with successful exits and relevant experience."
+      },
+      "market": {
+        "score": 6,
+        "stance": "neutral",
+        "trend": "stable",
+        "rationale": "Growing market for AI in finance, but competition and employee issues may limit growth."
+      },
+      "ideaVsMarket": {
+        "score": 7,
+        "survivesAsIs": true,
+        "trend": "stable",
+        "rationale": "The product addresses a clear market need and can survive without immediate pivots."
+      }
+    },
+    "disagreement": "The company's mixed employee reviews and reports of layoffs could be overstated and may not significantly impact its long-term potential."
+  },
+  "sourcingRaw": "### Company Overview\nBillow AI Labs is an AI-native firm specializing in finance and accounting solutions for regulated industries. Founded in 2016, the company automates complex financial workflows, enhancing compliance and efficiency. It integrates with existing systems like NetSuite and Coupa, aiming to streamline processes that traditionally take days into mere minutes. Billow AI Labs is currently recognized as a Series B startup and has raised a total of $55 million in funding, including a $40 million Series A round [1][2][3].\n\n### Founder Signals\nBillow AI Labs was co-founded by Jonathan McIntosh and Philip Moniaga. McIntosh has a strong background in fintech, having previously built and exited an accounting platform that served 45,000 businesses. Moniaga has experience from Bloomberg, where he developed financial data infrastructure, and has also served as CTO of a trading platform with significant transaction volume [2][3][4].\n\n### Reputation & Reviews\nThe company has received mixed reviews from employees, with an average rating of 3.3 out of 5. Some employees have raised concerns about work-life balance and limited learning opportunities, while others praise the efficiency brought by the company's AI-driven solutions [1][3]. Approximately 51% of employees would recommend working at Billow AI Labs to a friend [1].\n\n### Traction/Funding\nBillow AI Labs has successfully raised $55 million in funding, with a notable $40 million from its Series A round. The company is actively seeking additional funding to support product development and market expansion [1][2][3]. It is positioned within a growing market for AI tools in finance, indicating potential for further growth and adoption [4].\n\n### Red Flags\nDespite its innovative solutions, Billow AI Labs faces challenges related to employee satisfaction, particularly concerning work-life balance and opportunities for professional growth. These issues could impact employee retention and overall company stability [1][3]. Additionally, there have been reports of layoffs, which may indicate underlying operational challenges [3]."
+}

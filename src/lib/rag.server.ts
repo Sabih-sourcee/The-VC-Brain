@@ -7,7 +7,7 @@
 // top level of a *.functions.ts file (it pulls in the service-role client).
 import { embed, embedMany } from "ai";
 import { embeddingModel } from "./ai-gateway.server";
-import { supabaseAdmin } from "@/integrations/supabase/client.server";
+import { supabaseAdmin } from "../integrations/supabase/client.server";
 
 export type MemoryChunk = {
   id: string;
