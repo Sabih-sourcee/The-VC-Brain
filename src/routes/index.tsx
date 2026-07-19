@@ -11,8 +11,24 @@ import { scanOutbound, type ScanOutboundResult, type OutboundCandidate } from "@
 import { parseDeck } from "@/lib/deck.functions";
 import { searchFounders, type FounderSearchResult } from "@/lib/founders.functions";
 
+function LoadingShell() {
+  return (
+    <div className="min-h-dvh flex items-center justify-center" style={{ backgroundColor: INK, color: BRAND }}>
+      <div className="flex items-center gap-3" style={{ fontFamily: "Geist Mono, monospace" }}>
+        <Loader2 size={18} className="animate-spin" aria-hidden />
+        <span className="text-sm tracking-wider">LOADING VC BRAIN…</span>
+      </div>
+    </div>
+  );
+}
+
+// This app is fully client-driven (localStorage state + server functions invoked
+// on user actions) and needs no server-rendered data, so we render it on the
+// client. This also removes the SSR execution path as a source of runtime errors.
 export const Route = createFileRoute("/")({
+  ssr: false,
   component: VCBrain,
+  pendingComponent: LoadingShell,
 });
 
 const BRAND = "#DADD98";
