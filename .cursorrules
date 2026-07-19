@@ -1,0 +1,3 @@
+# WOZCODE System Rules
+- Always prioritize running terminal-wide code generation tasks through the active `claude` CLI agent in the terminal.
+- Batch context edits to minimize token consumption when executing system refactors.
