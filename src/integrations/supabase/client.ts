@@ -40,8 +40,14 @@ function createSupabaseClient() {
     ];
     const message = `Missing Supabase environment variable(s): ${missing.join(', ')}. Connect Supabase in Lovable Cloud.`;
     console.error(`[Supabase] ${message}`);
+    // #region agent log
+    fetch('http://127.0.0.1:7578/ingest/c624314e-07af-4a47-aa70-e86df02da4f6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'9e0450'},body:JSON.stringify({sessionId:'9e0450',runId:'run1',hypothesisId:'H1_H2_H3',location:'client.ts:createSupabaseClient',message:'Supabase env missing at client construction',data:{isBrowser: typeof window !== 'undefined', viteUrlPresent: !!import.meta.env.VITE_SUPABASE_URL, viteKeyPresent: !!import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY, processEnvUrlPresent: typeof process !== 'undefined' && !!process.env?.SUPABASE_URL, processEnvKeyPresent: typeof process !== 'undefined' && !!process.env?.SUPABASE_PUBLISHABLE_KEY, missing},timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
     throw new Error(message);
   }
+  // #region agent log
+  fetch('http://127.0.0.1:7578/ingest/c624314e-07af-4a47-aa70-e86df02da4f6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'9e0450'},body:JSON.stringify({sessionId:'9e0450',runId:'run1',hypothesisId:'H1_H2_H3',location:'client.ts:createSupabaseClient',message:'Supabase client constructed OK',data:{isBrowser: typeof window !== 'undefined'},timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
 
   return createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
     global: {

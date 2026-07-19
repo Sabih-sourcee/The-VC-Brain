@@ -6,10 +6,23 @@ import { supabase } from './client'
 // the browser never attaches the bearer token to serverFn RPCs.
 export const attachSupabaseAuth = createMiddleware({ type: 'function' }).client(
   async ({ next }) => {
-    const { data } = await supabase.auth.getSession()
-    const token = data.session?.access_token
-    return next({
-      headers: token ? { Authorization: `Bearer ${token}` } : {},
-    })
+    // #region agent log
+    fetch('http://127.0.0.1:7578/ingest/c624314e-07af-4a47-aa70-e86df02da4f6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'9e0450'},body:JSON.stringify({sessionId:'9e0450',runId:'run1',hypothesisId:'H4',location:'auth-attacher.ts:client-middleware',message:'entering attachSupabaseAuth client middleware',timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
+    try {
+      const { data } = await supabase.auth.getSession()
+      const token = data.session?.access_token
+      // #region agent log
+      fetch('http://127.0.0.1:7578/ingest/c624314e-07af-4a47-aa70-e86df02da4f6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'9e0450'},body:JSON.stringify({sessionId:'9e0450',runId:'run1',hypothesisId:'H4',location:'auth-attacher.ts:client-middleware',message:'attachSupabaseAuth succeeded, calling next()',data:{hasToken: !!token},timestamp:Date.now()})}).catch(()=>{});
+      // #endregion
+      return next({
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      })
+    } catch (error) {
+      // #region agent log
+      fetch('http://127.0.0.1:7578/ingest/c624314e-07af-4a47-aa70-e86df02da4f6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'9e0450'},body:JSON.stringify({sessionId:'9e0450',runId:'run1',hypothesisId:'H4',location:'auth-attacher.ts:client-middleware',message:'attachSupabaseAuth threw before reaching server',data:{errorMessage: (error as Error)?.message},timestamp:Date.now()})}).catch(()=>{});
+      // #endregion
+      throw error
+    }
   },
 )

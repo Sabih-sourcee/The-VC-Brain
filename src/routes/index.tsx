@@ -130,7 +130,6 @@ function VCBrain() {
   const [running, setRunning] = useState(false);
   const [stageIdx, setStageIdx] = useState(-1);
   const [showMemo, setShowMemo] = useState(false);
-  const [pdfBusy, setPdfBusy] = useState(false);
   const [result, setResult] = useState<RunAnalysisResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [tab, setTab] = useState<"dashboard" | "inbound" | "radar" | "search">("dashboard");
@@ -922,6 +921,7 @@ type Assessment = NonNullable<RunAnalysisResult["assessment"]>;
 function MemoView({ thesis, result, allRows }: { thesis: Thesis; result: RunAnalysisResult; allRows: DashRow[] }) {
   const a = result.assessment;
   const [lens, setLens] = useState<"bull" | "bear">("bull");
+  const [pdfBusy, setPdfBusy] = useState(false);
 
   const downloadPdf = async () => {
     if (pdfBusy) return;
